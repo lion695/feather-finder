@@ -1,0 +1,25 @@
+/* FeatherFinder Global Design Palette (LO1.1 Compliance) */
+
+:root {
+    /* Nature-Inspired Branding Palette from Coolors.co */
+    --primary-forest-green: #1E4620;
+    /* Navbars, primary headers, major buttons */
+    --secondary-sage-green: #7DAA7D;
+    /* Visual badges, borders, subtle highlights */
+    --cta-beak-yellow: #F4A261;
+    /* Eye-catching action buttons (+ Log Sighting) */
+    --text-dark-slate: #2B2D42;
+    /* Main readable text body (High-contrast) */
+    --bg-light-canvas: #F8F9FA;
+    /* App background canvas */
+    --pure-white: #FFFFFF;
+    /* Card backgrounds, clean text fields */
+}
+
+body {
+    background-color: var(--bg-light-canvas);
+    color: var(--text-dark-slate);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
