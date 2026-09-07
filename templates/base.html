@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeatherFinder - Birdwatching Log</title>
+    <!-- Bootstrap 5 CSS for Fluid Grid Responsiveness -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <!-- Project Custom Stylesheet Link -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- Accessible High-Contrast Sticky Navigation Bar (LO1.1) -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--primary-forest-green);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🌲 FeatherFinder</a>
+            <button class="navbar-expand-toggle navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <!-- Dynamic Authentication Context Indicators (LO3.2) -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm mx-2 fw-bold text-dark" style="background-color: var(--cta-beak-yellow);"
+                            href="#">+ Log Sighting</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                    <li class="nav-item ms-2 text-white-50 small">🐦 @{{ user.username }}</li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Django Flash Messages Notification Banner Block (LO2.3) -->
+    <div class="container mt-3">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <!-- Core Dynamic Layout Content Block Area -->
+    <main class="container my-4">
+        {% block content %}
+        <!-- Child page application view interfaces insert here cleanly -->
+        {% endblock content %}
+    </main>
+
+    <!-- Accessible Semantic Footer Element -->
+    <footer class="text-center py-3 mt-auto text-white-50" style="background-color: var(--text-dark-slate);">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 FeatherFinder Capstone Project. Built for Educational Evaluation.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS for Responsive Toggles -->
+    <script src="https://jsdelivr.net"></script>
+</body>
+
+</html>
